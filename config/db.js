@@ -1,11 +1,11 @@
-const Sequelize = require("sequelize");
-const dotenv = require('dotenv')
-dotenv.config()
+const { Sequelize } = require('sequelize');
+const dotenv = require('dotenv');
+      dotenv.config();
 
-const {DB_NAME, DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+// const {DB_NAME, DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-const db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-    host: DB_HOST,
+const db = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: "mysql",
 })
 

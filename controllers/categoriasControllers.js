@@ -1,4 +1,4 @@
-const {Categorias} = require("../config/associations");
+const { Categorias, Catalogo } = require("../config/associations");
 
 async function listarCategorias(req, res) {
     try {

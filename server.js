@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const { db } = require("./config/db");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.DB_PORT || 3000;
 
 app.use(express.json());
 
@@ -14,7 +14,7 @@ app.use(async (req, res, next) => {
     }
 });
 
-const CategoriasRouter = require ("./routers/CategoriasRouter");
+const CategoriasRouter = require ("./routers/CategoriasRouter.js");
 const GenerosRouter = require ("./routers/GenerosRouter");
 const ActricesYActoresRouter = require ("./routers/ActricesYActoresRouter");
 const CatalogoRouter = require ("./routers/CatalogoRouter");
