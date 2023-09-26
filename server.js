@@ -1,38 +1,38 @@
 const express = require('express');
 const app = express();
-
-const sequelize = require('../Sequelize/src/routers/connection');
-const Product = require('../Sequelize/src/models/product');
-
-const port =process.env.PORT || 3000;
+const { db } = require("./config/db");
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get('/productos', async (req, res) => {
+app.use(async (req, res, next) => {
     try{
-        await sequelize.authenticate()
-        await Product.sync();
-        const allProducts = await Product.findAll();
-        const allProductsData = allProducts.map(product => product.dataValues);
-        res.status(200).json(allProductsData);
+        await db.authenticate();
+        next();
     }catch(error){
         res.status(500).json({error: 'Error en el servidor', description: error.message});
     }
 });
 
-async function main() {
-  try {
-    await sequelize.authentiicate();
-    console.log("Conexion exitosa a la base de datos.");
-    await Product.sync();
-    const allProducts = await Product.findAll();
-    const allProductsData = allProducts.map((product) => product.dataValues);
-    console.table(allProductsData);
-  } catch (error) {
-    console.error("Error de acceso a la bb.dd:", error);
-  } finally {
-    sequelize.close();
-  }
-}
+const CategoriasRouter = require ("./routers/CategoriasRouter");
+const GenerosRouter = require ("./routers/GenerosRouter");
+const ActricesYActoresRouter = require ("./routers/ActricesYActoresRouter");
+const CatalogoRouter = require ("./routers/CatalogoRouter");
+const Catalogo_generosRouter = require ("./routers/Catalogo_generosRouter");
+const Catalogo_actricesYActoresRouter = require ("./routers/Catalogo_actricesYActoresRouter");
 
-main();
+app.get("/",(req, res) => {
+    res.status(200).end("Bienvenidos a la API con MySQL y Sequelize");
+});
+
+app.use("/api",CategoriasRouter);
+app.use("/api",GenerosRouter);
+app.use("/api",ActricesYActoresRouter);
+app.use("/api",CatalogoRouter);
+app.use("/api",Catalogo_generosRouter);
+app.use("/api",Catalogo_actricesYActoresRouter);
+
+
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
