@@ -3,13 +3,14 @@ const app = express();
 const { db } = require("./config/db.js");
 const PORT = process.env.DB_PORT || 3000;
 
-//db.sync({force: true}) 
+//
 
 app.use(express.json());
 
 app.use(async (req, res, next) => {
     try{
         await db.authenticate();
+        //await db.sync({force: true}) 
         next();
     }catch(error){
         res.status(500).json({error: 'Error en el servidor', description: error.message});

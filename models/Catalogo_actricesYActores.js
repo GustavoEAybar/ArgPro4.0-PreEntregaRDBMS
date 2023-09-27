@@ -8,12 +8,12 @@ const { db } = require("../config/db.js");
       autoIncrement: true,
       allowNull: false
     },
-    // catalogo_id: {
-    //   type: Sequelize.INTEGER,
-    // },
-    // actricesYActores_id:{
-    //   type: Sequelize.INTEGER,
-    // },
+    catalogo_id: {
+      type: DataTypes.INTEGER,
+    },
+    actricesYActores_id:{
+      type: DataTypes.INTEGER,
+    },
   }, { tableName: "Catalogo_actricesYActores", timestamps: false });
 
   module.exports = Catalogo_actricesYActores;

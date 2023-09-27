@@ -15,10 +15,10 @@ const Catalogo = db.define('Catalogo', {
     titulo:{
         type: DataTypes.STRING(150),
     },
-    // categoria_id:{
-    //     type: DataTypes.INTEGER,
-    //     foreignKey: true
-    // },
+    categoria_id:{
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
     resumen:{
         type: DataTypes.TEXT
     },

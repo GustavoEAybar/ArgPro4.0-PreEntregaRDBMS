@@ -1,17 +1,17 @@
-const { Catalogo, Categorias, Generos, ActricesYActores, Catalogo_actricesYActores, Catalogo_generos } = require("../config/associations.js"); // Importa el modelo Usuario
+const { Catalogo, Categorias, Generos, ActricesYActores, Catalogo_actricesYActores, Catalogo_generos } = require("../config/associations.js"); // Importa el modelo Pelicula o Serie
 
-// Controlador para listar todos los usuarios
+// Controlador para listar todos los peliculas y series
 async function listarPeliculas(req, res) {
   try {
     const PeliculasYSeries = await Catalogo.findAll();
     res.json(PeliculasYSeries);
   } catch (error) {
-    console.error("Error al consultar usuarios", error);
-    res.status(500).json({ error: "Error al consultar usuarios" });
+    console.error("Error al consultar peliculas y series", error);
+    res.status(500).json({ error: "Error al consultar peliculas y series" });
   }
 }
 
-// Controlador para crear un nuevo usuario
+// Controlador para crear un nuevo Pelicula o Serie
 const crearPelOSer = async(req, res) => {
   const { poster, titulo, categoria_id, resumen, temporada, triler } = req.body;
 
@@ -19,12 +19,12 @@ const crearPelOSer = async(req, res) => {
     const nuevaPelOSer = await Catalogo.create({ poster, titulo, categoria_id, resumen, temporada, triler });
     res.status(201).json(nuevaPelOSer);
   } catch (error) {
-    console.error("Error al crear un usuario", error);
-    res.status(500).json({ error: "Error al crear un usuario" });
+    console.error("Error al crear un Pelicula o Serie", error);
+    res.status(500).json({ error: "Error al crear un Pelicula o Serie" });
   }
 }
 
-// Controlador para obtener un usuario por su ID
+// Controlador para obtener un Pelicula o Serie por su ID
 const obtenerPelOSer= async (req, res) => {
   const catalogo_id = req.params.id;
 
@@ -35,12 +35,12 @@ const obtenerPelOSer= async (req, res) => {
     }
     res.json(PelOSer);
   } catch (error) {
-    console.error("Error al obtener el usuario", error);
+    console.error("Error al obtener el Pelicula o Serie", error);
     res.status(500).json({ error: "Error al obtener la pelicula o serie" });
   }
 }
 
-// Controlador para actualizar un usuario por su ID
+// Controlador para actualizar un Pelicula o Serie por su ID
 const actualizarPelOSer = async (req, res) => {
   const catalogo_id = req.params.id;
   const { poster, titulo, categoria_id, resumen, temporada, triler } = req.body;
@@ -58,7 +58,7 @@ const actualizarPelOSer = async (req, res) => {
   }
 }
 
-// Controlador para eliminar un usuario por su ID
+// Controlador para eliminar un Pelicula o Serie por su ID
 const eliminarPelOSer = async (req, res) => {
   const catalogo_id = req.params.id;
 
