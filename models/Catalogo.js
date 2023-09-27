@@ -1,17 +1,35 @@
-const Sequelize = require("sequelize");
-const { db } = require("../config/db");
+const { Sequelize } = require('sequelize');
+const { db } = require('../config/db.js');
 
-  const Catalogo = db.define('Catalogo', {
-    Catalogo_id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false
+const Catalogo = db.define('Catalogo', {
+    catalogo_id:{
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
     },
-    Nombre_Catalogo: {
-      type: Sequelize.STRING(30),
-      allowNull: false
-    }
-  }, { tableName: "Catalogo", timestamps: false });
+    poster:{
+        type: Sequelize.STRING(200),
+        allowNull: true
+    },
+    titulo:{
+        type: Sequelize.STRING(150),
+    },
+    categoria_id:{
+        type: Sequelize.INTEGER,
+        foreignKey: true
+    },
+    resumen:{
+        type: Sequelize.TEXT
+    },
+    temporada:{
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    triler:{
+        type: Sequelize.STRING(200),
+        allowNull: true
+    },
+});
 
-  module.exports = Catalogo;
+module.exports = Catalogo;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const catalogoControllers = require('../controllers/catalogoControllers');
+const catalogoControllers = require('../controllers/catalogoControllers.js');
 
 // Rutas para las categorías
 router.get('/catalogo', catalogoControllers.listarPeliculas);

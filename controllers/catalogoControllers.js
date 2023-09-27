@@ -1,4 +1,4 @@
-const { Catalogo } = require("../config/associations"); // Importa el modelo Usuario
+const { Catalogo } = require("../config/associations.js"); // Importa el modelo Usuario
 
 // Controlador para listar todos los usuarios
 async function listarPeliculas(req, res) {

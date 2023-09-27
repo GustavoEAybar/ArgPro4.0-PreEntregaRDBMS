@@ -1,12 +1,12 @@
-const Sequelize = require("sequelize");
-const { db } = require("../config/db");
+const { Sequelize } = require("sequelize");
+const { db } = require("../config/db.js");
 
   const ActricesYActores = db.define('ActricesYActores', {
     actricesYActores_id: {
       type: Sequelize.INTEGER,
-      allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      allowNull: false
     },
     nombreCompleto: {
       type: Sequelize.STRING(250)

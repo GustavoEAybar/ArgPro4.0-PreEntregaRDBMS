@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
-const { db } = require("./config/db");
+const { db } = require("./config/db.js");
 const PORT = process.env.DB_PORT || 3000;
+
+//db.sync({force: true}) 
 
 app.use(express.json());
 
@@ -15,11 +17,11 @@ app.use(async (req, res, next) => {
 });
 
 const CategoriasRouter = require ("./routers/CategoriasRouter.js");
-const GenerosRouter = require ("./routers/GenerosRouter");
-const ActricesYActoresRouter = require ("./routers/ActricesYActoresRouter");
-const CatalogoRouter = require ("./routers/CatalogoRouter");
-const Catalogo_generosRouter = require ("./routers/Catalogo_generosRouter");
-const Catalogo_actricesYActoresRouter = require ("./routers/Catalogo_actricesYActoresRouter");
+const GenerosRouter = require ("./routers/GenerosRouter.js");
+const ActricesYActoresRouter = require ("./routers/ActricesYActoresRouter.js");
+const CatalogoRouter = require ("./routers/CatalogoRouter.js");
+const Catalogo_generosRouter = require ("./routers/Catalogo_generosRouter.js");
+const Catalogo_actricesYActoresRouter = require ("./routers/Catalogo_actricesYActoresRouter.js");
 
 app.get("/",(req, res) => {
     res.status(200).end("Bienvenidos a la API con MySQL y Sequelize");

@@ -1,4 +1,4 @@
-const { Catalogo_actricesYActoresRouter, Catalogo, ActricesYActores } = require("../config/associations");
+const { Catalogo_actricesYActoresRouter, Catalogo, ActricesYActores } = require("../config/associations.js");
 
 // Crear un nuevo registro de Post_Etiquetas
 const crearRelacion = async (req, res) => {

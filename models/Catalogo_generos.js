@@ -1,14 +1,18 @@
-const Sequelize = require("sequelize");
-const { db } = require("../config/db");
+const { Sequelize } = require("sequelize");
+const { db } = require("../config/db.js");
 
   const Catalogo_generos = db.define('Catalogo_generos', {
-    generos_id: {
+    trama_id:{
       type: Sequelize.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
     },
     catalogo_id: {
       type: Sequelize.INTEGER,
-      primaryKey: true,
+    },
+    generos_id: {
+      type: Sequelize.INTEGER,
     },
   }, { tableName: "Catalogo_generos", timestamps: false });
 

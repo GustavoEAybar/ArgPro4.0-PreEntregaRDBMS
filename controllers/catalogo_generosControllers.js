@@ -1,5 +1,5 @@
 
-const { Catalogo_generos, Catalogo, Generos } = require("../config/associations");
+const { Catalogo_generos, Catalogo, Generos } = require("../config/associations.js");
 
 // Crear un nuevo registro de Post_Etiquetas
 const crearRelacion = async (req, res) => {

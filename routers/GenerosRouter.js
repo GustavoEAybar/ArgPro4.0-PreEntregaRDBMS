@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const generosControllers = require('../controllers/generosControllers');
+const generosControllers = require('../controllers/generosControllers.js');
 
 // Rutas para las categorías
 router.get('/generos', generosControllers.listarGeneros);

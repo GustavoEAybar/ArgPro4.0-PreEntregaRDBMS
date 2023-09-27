@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const actricesYActoresControllers = require('../controllers/actricesYActoresControllers');
+const actricesYActoresControllers = require('../controllers/actricesYActoresControllers.js');
 
 // Rutas para las categorías
 router.get('/actricesYActores', actricesYActoresControllers.listarActricesYActores);
