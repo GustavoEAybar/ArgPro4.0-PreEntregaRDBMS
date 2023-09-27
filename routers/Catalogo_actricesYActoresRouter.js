@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const catalogo_actricesYActoresControllers = require('../controllers/catalogo_actricesYActoresControllers.js');
+const catalogo_actricesYActoresControllers = require('../controllers/Catalogo_actricesYActoresControllers.js');
 
 // Rutas para las categorías
 router.get('/repartoDePOS/:id', catalogo_actricesYActoresControllers.obtenerRelacion);

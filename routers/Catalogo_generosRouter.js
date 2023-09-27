@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const catalogo_generosControllers = require('../controllers/catalogo_generosControllers.js');
+const catalogo_generosControllers = require('../controllers/Catalogo_generosControllers.js');
 
 // Rutas para las categorías
 router.get('/TramaDePOS/:id', catalogo_generosControllers.obtenerRelacion);

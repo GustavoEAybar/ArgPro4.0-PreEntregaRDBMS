@@ -1,33 +1,33 @@
-const { Sequelize } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const { db } = require('../config/db.js');
 
 const Catalogo = db.define('Catalogo', {
     catalogo_id:{
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
     poster:{
-        type: Sequelize.STRING(200),
+        type: DataTypes.STRING(200),
         allowNull: true
     },
     titulo:{
-        type: Sequelize.STRING(150),
+        type: DataTypes.STRING(150),
     },
-    categoria_id:{
-        type: Sequelize.INTEGER,
-        foreignKey: true
-    },
+    // categoria_id:{
+    //     type: DataTypes.INTEGER,
+    //     foreignKey: true
+    // },
     resumen:{
-        type: Sequelize.TEXT
+        type: DataTypes.TEXT
     },
     temporada:{
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
     triler:{
-        type: Sequelize.STRING(200),
+        type: DataTypes.STRING(200),
         allowNull: true
     },
 });

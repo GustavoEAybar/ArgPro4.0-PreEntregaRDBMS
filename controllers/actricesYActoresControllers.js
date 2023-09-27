@@ -1,4 +1,4 @@
-const {ActricesYActores} = require("../config/associations.js");
+const { ActricesYActores, Catalogo, Catalogo_actricesYActores} = require("../config/associations.js");
 
 async function listarActricesYActores(req, res) {
     try {

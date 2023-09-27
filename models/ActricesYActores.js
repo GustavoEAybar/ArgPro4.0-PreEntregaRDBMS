@@ -1,15 +1,15 @@
-const { Sequelize } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const { db } = require("../config/db.js");
 
   const ActricesYActores = db.define('ActricesYActores', {
     actricesYActores_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
     nombreCompleto: {
-      type: Sequelize.STRING(250)
+      type: DataTypes.STRING(250)
     }
   }, { tableName: "ActricesYActores", timestamps: false });
 
