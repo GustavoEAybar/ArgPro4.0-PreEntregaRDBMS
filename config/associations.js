@@ -9,10 +9,13 @@ Categorias.hasMany(Catalogo, {foreignKey: 'categorias_id'});
 Catalogo.belongsTo(Categorias,{foreignKey:'categorias_id'});
 
 
-ActricesYActores.belongsToMany(Catalogo,{through: Catalogo_actricesYActores, foreignkey: 'actricesYActores_id'});
-Catalogo.belongsToMany(ActricesYActores,{through: Catalogo_actricesYActores, foreignkey: 'catalogo_id'});
-Generos.belongsToMany(Catalogo,{through: Catalogo_generos, foreignkey: 'generos_id'});
-Catalogo.belongsToMany(Generos,{through: Catalogo_generos, foreignkey:'catalogo_id'});
+Catalogo.belongsToMany(ActricesYActores,{through: 'Catalogo_actricesYActores', foreignkey: 'catalogo_id'});
+
+ActricesYActores.belongsToMany(Catalogo,{through: 'Catalogo_actricesYActores', foreignkey: 'actricesYActores_id'});
+
+Catalogo.belongsToMany(Generos,{through: 'Catalogo_generos', foreignkey:'catalogo_id'});
+
+Generos.belongsToMany(Catalogo,{through: 'Catalogo_generos', foreignkey: 'generos_id'});
 
 module.exports = {
     Categorias,

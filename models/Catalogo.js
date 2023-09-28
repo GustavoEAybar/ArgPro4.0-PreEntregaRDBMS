@@ -15,12 +15,12 @@ const Catalogo = db.define('Catalogo', {
     titulo:{
         type: DataTypes.STRING(150),
     },
-    categoria_id:{
+    categorias_id:{
         type: DataTypes.INTEGER,
         primaryKey: true
     },
     resumen:{
-        type: DataTypes.TEXT
+        type: DataTypes.STRING
     },
     temporada:{
         type: DataTypes.INTEGER,
@@ -30,6 +30,6 @@ const Catalogo = db.define('Catalogo', {
         type: DataTypes.STRING(200),
         allowNull: true
     },
-});
+}, { tableName: "Catalogo", timestamps: false });
 
 module.exports = Catalogo;

@@ -43,14 +43,14 @@ const obtenerPelOSer= async (req, res) => {
 // Controlador para actualizar un Pelicula o Serie por su ID
 const actualizarPelOSer = async (req, res) => {
   const catalogo_id = req.params.id;
-  const { poster, titulo, categoria_id, resumen, temporada, triler } = req.body;
+  const { poster, titulo, categorias_id, resumen, temporada, triler } = req.body;
 
   try {
     const PelOSer = await Catalogo.findByPk(catalogo_id);
     if (!PelOSer) {
       return res.status(404).json({ error: "Pelicula o serie no encontrada." });
     }
-    await PelOSer.update({ poster, titulo, categoria_id, resumen, temporada, triler });
+    await PelOSer.update({ poster, titulo, categorias_id, resumen, temporada, triler });
     res.json(PelOSer);
   } catch (error) {
     console.error("Error al actualizar los datos", error);

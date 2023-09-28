@@ -10,9 +10,11 @@ const { db } = require("../config/db.js");
     },
     catalogo_id: {
       type: DataTypes.INTEGER,
+      primaryKey: true
     },
     generos_id: {
       type: DataTypes.INTEGER,
+      primaryKey: true
     },
   }, { tableName: "Catalogo_generos", timestamps: false });
 
