@@ -8,14 +8,6 @@ const { db } = require("../config/db.js");
       autoIncrement: true,
       allowNull: false
     },
-    catalogo_id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true
-    },
-    actricesYActores_id:{
-      type: DataTypes.INTEGER,
-      primaryKey: true
-    },
   }, { tableName: "Catalogo_actricesYActores", timestamps: false });
 
   module.exports = Catalogo_actricesYActores;

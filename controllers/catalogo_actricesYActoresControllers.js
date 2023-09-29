@@ -1,11 +1,11 @@
-const { Catalogo_actricesYActoresRouter, Catalogo, ActricesYActores } = require("../config/associations.js");
+const { Catalogo_actricesYActores, Catalogo, ActricesYActores } = require("../config/associations.js");
 
 // Crear un nuevo registro de Post_Etiquetas
-const crearRelacion = async (req, res) => {
+const crearReparto = async (req, res) => {
     const { catalogo_id, actricesYActores_id } = req.body;
   
     try {
-      const nuevaRelacion = await Catalogo_actricesYActoresRouter.create({
+      const nuevaRelacion = await Catalogo_actricesYActores.create({
         catalogo_id,
         actricesYActores_id,
       });
@@ -20,9 +20,9 @@ const crearRelacion = async (req, res) => {
   };
   
   // Obtener todos los registros de Post_Etiquetas
-  const obtenerRelacion = async (req, res) => {
+  const obtenerReparto = async (req, res) => {
     try {
-      const reparto = await Catalogo_actricesYActoresRouter.findAll();
+      const reparto = await Catalogo_actricesYActores.findAll();
       res.json(reparto);
     } catch (error) {
       console.error("Error al obtener los registros de reparto", error);
@@ -33,12 +33,12 @@ const crearRelacion = async (req, res) => {
   };
   
   // Actualizar un registro de Post_Etiquetas por ID
-  const actualizarRelacion = async (req, res) => {
+  const actualizarReparto = async (req, res) => {
     const { id } = req.params;
     const { catalogo_id, actricesYActores_id } = req.body;
   
     try {
-      const repartoActualizar = await Catalogo_actricesYActoresRouter.findByPk(id);
+      const repartoActualizar = await Catalogo_actricesYActores.findByPk(id);
       if (!repartoActualizar) {
         res
           .status(404)
@@ -61,11 +61,11 @@ const crearRelacion = async (req, res) => {
   };
   
   // Eliminar un registro de Post_Etiquetas por ID
-  const eliminarRelacion = async (req, res) => {
+  const eliminarReparto = async (req, res) => {
     const { id } = req.params;
   
     try {
-      const eliminarRelacion = await Catalogo_actricesYActoresRouter.findByPk(id);
+      const eliminarRelacion = await Catalogo_actricesYActores.findByPk(id);
       if (!eliminarRelacion) {
         res
           .status(404)
@@ -86,8 +86,8 @@ const crearRelacion = async (req, res) => {
   
   
   module.exports = {
-    crearRelacion,
-    obtenerRelacion,
-    actualizarRelacion,
-    eliminarRelacion,
+    crearReparto,
+    obtenerReparto,
+    actualizarReparto,
+    eliminarReparto,
   };
