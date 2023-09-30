@@ -4,6 +4,7 @@ const ActricesYActores = require("../models/ActricesYActores.js");
 const Catalogo = require("../models/Catalogo.js");
 const Catalogo_actricesYActores = require("../models/Catalogo_actricesYActores.js");
 const Catalogo_generos = require("../models/Catalogo_generos.js");
+const TrilerflixView = require("../models/TrilerflixView");
 
 Categorias.hasMany(Catalogo, { foreignKey: "categorias_id" });
 Catalogo.belongsTo(Categorias, { foreignKey: "categorias_id" });
@@ -39,4 +40,5 @@ module.exports = {
   Catalogo,
   Catalogo_actricesYActores,
   Catalogo_generos,
+  TrilerflixView
 };

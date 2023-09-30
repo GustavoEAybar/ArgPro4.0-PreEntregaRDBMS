@@ -1,13 +1,76 @@
-const { Catalogo, Categorias, Generos, ActricesYActores, Catalogo_actricesYActores, Catalogo_generos } = require("../config/associations.js"); // Importa el modelo Pelicula o Serie
+const { Catalogo, Categorias, Generos, ActricesYActores, Catalogo_actricesYActores, Catalogo_generos, TrilerflixView } = require("../config/associations.js"); // Importa el modelo Pelicula o Serie
+const { where } = require("sequelize");
+const { Op } = require("sequelize");
 
 // Controlador para listar todos los peliculas y series
 async function listarPeliculas(req, res) {
   try {
-    const PeliculasYSeries = await Catalogo.findAll();
+    const PeliculasYSeries = await TrilerflixView.findAll();
     res.json(PeliculasYSeries);
   } catch (error) {
     console.error("Error al consultar peliculas y series", error);
     res.status(500).json({ error: "Error al consultar peliculas y series" });
+  }
+}
+
+// Controlador para obtener un Pelicula o Serie por su ID
+const obtenerPelOSerID= async (req, res) => {
+  const catalogo_id = parseInt(req.params.id);
+
+  try {
+    const PelOSer = await Catalogo.findByPk(catalogo_id);
+    if (!PelOSer) {
+      return res.status(404).json({ error: "Pelicula o serie no encontrada." });
+    }
+    res.json(PelOSer);
+  } catch (error) {
+    console.error("Error al obtener el Pelicula o Serie", error);
+    res.status(500).json({ error: "Error al obtener la pelicula o serie" });
+  }
+}
+// Controlador para obtener un Pelicula o Serie por su ID
+const obtenerPelOSerN= async (req, res) => {
+  const { tituloB } = req.params;
+
+  try {
+    const PelOSer = await Catalogo.findAll({where: { tituloB}, });
+    if (!PelOSer) {
+      return res.status(404).json({ error: "Pelicula o serie no encontrada. si esta ingresando y tomando las modificaciones" });
+    }
+    res.json(PelOSer);
+  } catch (error) {
+    console.error("Error al obtener el Pelicula o Serie", error);
+    res.status(500).json({ error: "Error al obtener la pelicula o serie" });
+  }
+}
+// Controlador para obtener un Pelicula o Serie por su ID
+const obtenerPelOSerG= async (req, res) => {
+  const catalogo_id = parseInt(req.params.id);
+
+  try {
+    const PelOSer = await Catalogo.findByPk(catalogo_id);
+    if (!PelOSer) {
+      return res.status(404).json({ error: "Pelicula o serie no encontrada." });
+    }
+    res.json(PelOSer);
+  } catch (error) {
+    console.error("Error al obtener el Pelicula o Serie", error);
+    res.status(500).json({ error: "Error al obtener la pelicula o serie" });
+  }
+}
+// Controlador para obtener un Pelicula o Serie por su ID
+const obtenerPelOSerC= async (req, res) => {
+  const catalogo_id = parseInt(req.params.id);
+
+  try {
+    const PelOSer = await Catalogo.findByPk(catalogo_id);
+    if (!PelOSer) {
+      return res.status(404).json({ error: "Pelicula o serie no encontrada." });
+    }
+    res.json(PelOSer);
+  } catch (error) {
+    console.error("Error al obtener el Pelicula o Serie", error);
+    res.status(500).json({ error: "Error al obtener la pelicula o serie" });
   }
 }
 
@@ -21,22 +84,6 @@ const crearPelOSer = async(req, res) => {
   } catch (error) {
     console.error("Error al crear un Pelicula o Serie", error);
     res.status(500).json({ error: "Error al crear un Pelicula o Serie" });
-  }
-}
-
-// Controlador para obtener un Pelicula o Serie por su ID
-const obtenerPelOSer= async (req, res) => {
-  const catalogo_id = req.params.id;
-
-  try {
-    const PelOSer = await Catalogo.findByPk(catalogo_id);
-    if (!PelOSer) {
-      return res.status(404).json({ error: "Pelicula o serie no encontrada." });
-    }
-    res.json(PelOSer);
-  } catch (error) {
-    console.error("Error al obtener el Pelicula o Serie", error);
-    res.status(500).json({ error: "Error al obtener la pelicula o serie" });
   }
 }
 
@@ -78,8 +125,11 @@ const eliminarPelOSer = async (req, res) => {
 // Exporta los controladores
 module.exports = {
   listarPeliculas,
+  obtenerPelOSerID,
+  obtenerPelOSerN,
+  obtenerPelOSerG,
+  obtenerPelOSerC,
   crearPelOSer,
-  obtenerPelOSer,
   actualizarPelOSer,
   eliminarPelOSer,
 };
