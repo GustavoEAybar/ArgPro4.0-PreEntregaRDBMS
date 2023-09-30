@@ -1,6 +1,6 @@
-const { Catalogo, Categorias, Generos, ActricesYActores, Catalogo_actricesYActores, Catalogo_generos, TrilerflixView } = require("../config/associations.js"); // Importa el modelo Pelicula o Serie
-const { where } = require("sequelize");
 const { Op } = require("sequelize");
+const { where } = require("sequelize");
+const { Catalogo, Categorias, Generos, ActricesYActores, Catalogo_actricesYActores, Catalogo_generos, TrilerflixView } = require("../config/associations.js"); // Importa el modelo Pelicula o Serie
 
 // Controlador para listar todos los peliculas y series
 async function listarPeliculas(req, res) {
@@ -30,10 +30,10 @@ const obtenerPelOSerID= async (req, res) => {
 }
 // Controlador para obtener un Pelicula o Serie por su ID
 const obtenerPelOSerN= async (req, res) => {
-  const { tituloB } = req.params;
+  const titulo = req.params;
 
   try {
-    const PelOSer = await Catalogo.findAll({where: { tituloB}, });
+    const PelOSer = await Catalogo.findAll({where: { titulo }, });
     if (!PelOSer) {
       return res.status(404).json({ error: "Pelicula o serie no encontrada. si esta ingresando y tomando las modificaciones" });
     }
